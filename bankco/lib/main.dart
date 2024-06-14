@@ -1,4 +1,5 @@
 import 'package:bankco/cargapage.dart';
+import 'package:bankco/iniciarpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class AplicativobankCo  extends StatelessWidget{
     return MaterialApp(
       title: 'BankCo',
       debugShowCheckedModeBanner: false,
-      home: CargaPage());
+      home: Iniciarpage());
   }
   
 }
