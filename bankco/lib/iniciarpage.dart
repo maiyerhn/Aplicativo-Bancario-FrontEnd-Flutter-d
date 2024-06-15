@@ -1,34 +1,47 @@
+import 'dart:convert';
 
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class Iniciarpage extends StatelessWidget {
+  String _response = 'Presiona el botón para enviar la solicitud';
+  
+   final TextEditingController _usuario = TextEditingController();
+  final TextEditingController _contrasena = TextEditingController();
+
+  String get usuario => _usuario.text;
+  String get contrasena => _contrasena.text;
+
+  Future<void> _sendGetRequest(String usuario, String contrasena) async {
+    final String url = 'https://example.com/api';
+
+    final Uri uri = Uri.parse(url).replace(queryParameters: {
+      'usuario': usuario,
+      'contrasena': contrasena,
+    });
+
+    try {
+      final response = await http.get(uri);
+
+          String usuarioEsperado = _usuario.toString();
+          String contrasenaEsperada = contrasena.toString();
+          final info = jsonDecode(response.body);
+          
+      if (response.statusCode == 200) {
+        
+      } else {
+        
+      }
+    } catch (e) {
+      
+    }
+  }
+  
   @override
   
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    final TextEditingController _userController = TextEditingController();
-    final TextEditingController _contrasenaController = TextEditingController();
-    
- 
-    
 
-     void _valform() {
-    if (_formKey.currentState!.validate()) {
-      // Validación exitosa, obtener y procesar los datos 
-      String user = _userController.text;
-      String contrasena = _contrasenaController.text;
-      
-      print('Usuario: $user');
-      print('Contrasena: $contrasena');
-
-      // Mostrar un mensaje al usuario
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Datos obtenidos: Usuario: $user, Contraseña: $contrasena'),
-        ),
-      );
-    }
-  }
     return Scaffold(
       appBar: AppBar(
          backgroundColor: Colors.blue.shade700,
@@ -36,7 +49,7 @@ class Iniciarpage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('BankCo'),
-            SizedBox(width: 8), // Espacio entre el texto y el icono
+            SizedBox(width: 8),
             IconButton(
               icon: ImageIcon(AssetImage('lib/img/iconLog.png')),
               onPressed: () {},
@@ -63,6 +76,7 @@ class Iniciarpage extends StatelessWidget {
       padding: const EdgeInsets.all(50.0),
       child: 
       TextFormField(
+        controller: _usuario,
         decoration: const InputDecoration(
           labelText: 'Usuario',
           alignLabelWithHint: true,
