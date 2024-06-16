@@ -23,8 +23,6 @@ class Iniciarpage extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('BankCo'),
-            SizedBox(width: 8),
             IconButton(
               icon: ImageIcon(AssetImage('lib/img/iconLog.png')),
               onPressed: () {},
