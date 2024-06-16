@@ -3,4 +3,5 @@ class Datos {
   int prestamo = 0;
   int meses = 0;
   
+  
 }

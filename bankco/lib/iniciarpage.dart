@@ -12,31 +12,6 @@ class Iniciarpage extends StatelessWidget {
   String get usuario => _usuario.text;
   String get contrasena => _contrasena.text;
 
-  Future<void> _sendGetRequest(String usuario, String contrasena) async {
-    final String url = 'https://example.com/api';
-
-    final Uri uri = Uri.parse(url).replace(queryParameters: {
-      'usuario': usuario,
-      'contrasena': contrasena,
-    });
-
-    try {
-      final response = await http.get(uri);
-
-          String usuarioEsperado = _usuario.toString();
-          String contrasenaEsperada = contrasena.toString();
-          final info = jsonDecode(response.body);
-          
-      if (response.statusCode == 200) {
-        
-      } else {
-        
-      }
-    } catch (e) {
-      
-    }
-  }
-  
   @override
   
   Widget build(BuildContext context) {
@@ -59,7 +34,7 @@ class Iniciarpage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.black12,
-        margin: EdgeInsets.all(40.0),
+        margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
         child: Form(child: Column(children:<Widget> [
           _inputtext1(),
           _inputtext2(),
@@ -73,7 +48,7 @@ class Iniciarpage extends StatelessWidget {
   
   _inputtext1() {
     return Container(
-      padding: const EdgeInsets.all(50.0),
+      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       TextFormField(
         controller: _usuario,
@@ -91,7 +66,7 @@ class Iniciarpage extends StatelessWidget {
 
   _inputtext2() {
     return Container(
-      padding: const EdgeInsets.all(50.0),
+      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       TextFormField(
         decoration: const InputDecoration(
@@ -108,7 +83,7 @@ class Iniciarpage extends StatelessWidget {
   }
   _inputtext3() {
     return Container(
-      padding: const EdgeInsets.all(50.0),
+      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       const ElevatedButton(
                 onPressed: null,
@@ -117,7 +92,7 @@ class Iniciarpage extends StatelessWidget {
   }
   _inputtext4() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 80.0),
+      margin: EdgeInsets.symmetric(horizontal: 80.0, vertical: 30.0),
       child: 
       
       const ElevatedButton(
