@@ -36,6 +36,7 @@ class Iniciarpage extends StatelessWidget {
         color: Colors.black12,
         margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
         child: Form(child: Column(children:<Widget> [
+         _inputtext5(),
           _inputtext1(),
           _inputtext2(),
           _inputtext3(),
@@ -100,5 +101,18 @@ class Iniciarpage extends StatelessWidget {
                 child: Center(child: Text('Registrarse')))
       );
   }
-  
+  _inputtext5() {
+  return Container(
+    margin: EdgeInsetsDirectional.only(top: 20),
+    child: Center(
+      child: Text(
+        'Iniciar Session',
+        style: TextStyle(
+          fontSize: 24.0,
+          color: Colors.blue.shade900,
+        ),
+      ),
+    ),
+  );
+}
 }

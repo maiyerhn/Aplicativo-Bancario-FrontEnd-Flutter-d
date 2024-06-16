@@ -36,6 +36,7 @@ class RegistroPage extends StatelessWidget {
             key: _formKey,
             child: Column(
               children: <Widget>[
+                _inputtext6(),
                 _inputtext1(),
                 _inputtext2(),
                 _inputtext3(),
@@ -127,4 +128,19 @@ class RegistroPage extends StatelessWidget {
       );
   }
   
+}
+
+_inputtext6() {
+  return Container(
+    margin: EdgeInsetsDirectional.only(top: 20),
+    child: Center(
+      child: Text(
+        'Registro',
+        style: TextStyle(
+          fontSize: 24.0,
+          color: Colors.blue.shade900,
+        ),
+      ),
+    ),
+  );
 }
