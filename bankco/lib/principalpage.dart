@@ -8,9 +8,8 @@ class Principalpage  extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.person_2), 
+          icon: Icon(Icons.person), 
           onPressed: () {
-            print('Botón al inicio presionado');
          },
          ),
          backgroundColor: Colors.blue.shade700,
