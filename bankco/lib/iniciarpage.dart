@@ -11,53 +11,57 @@ class _IniciarpageState extends State<Iniciarpage> {
   String _response = '';
   final TextEditingController _usuario = TextEditingController();
   final TextEditingController _contrasena = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  final _keylog = GlobalKey<FormState>();
   bool _isLoading = false;
 
   String get usuario => _usuario.text;
   String get contrasena => _contrasena.text;
 
   Future<void> _login() async {
-    if (_formKey.currentState!.validate()) {
+    if (_keylog.currentState!.validate()) {
       setState(() {
         _isLoading = true;
       });
 
-      final response = await http.post(
-        Uri.parse('https://6deb-45-238-146-4.ngrok-free.app/login'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{
-          'username': usuario,
-          'password': contrasena,
-        }),
-      );
+      try {
+        final response = await http.post(
+          Uri.parse('https://01de-45-238-146-4.ngrok-free.app/login'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'usuario': usuario,
+            'contrasena': contrasena,
+          }),
+        );
 
-      setState(() {
-        _isLoading = false;
-      });
-
-      if (response.statusCode == 200) {
         final responseBody = jsonDecode(response.body);
+
         setState(() {
+          _isLoading = false;
           _response = responseBody['message'];
         });
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(responseBody['message'])),
         );
 
-      } else {
-        final responseBody = jsonDecode(response.body);
+        if (response.statusCode == 200) {
+          // Navegar a otra pantalla si es necesario
+        }
+      } catch (error) {
         setState(() {
-          _response = responseBody['message'];
+          _isLoading = false;
+          _response = 'Ocurrió un error. Inténtelo de nuevo.';
         });
+
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(responseBody['message'])),
+          SnackBar(content: Text('Ocurrió un error. Inténtelo de nuevo.')),
         );
       }
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +82,7 @@ class _IniciarpageState extends State<Iniciarpage> {
         color: Colors.black12,
         margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
         child: Form(
-          key: _formKey,
+          key: _keylog,
           child: SingleChildScrollView(
             child: Column(
             children: <Widget>[
