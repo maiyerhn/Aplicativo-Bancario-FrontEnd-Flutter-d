@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:bankco/principalpage.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -25,7 +27,7 @@ class _IniciarpageState extends State<Iniciarpage> {
 
       try {
         final response = await http.post(
-          Uri.parse('https://01de-45-238-146-4.ngrok-free.app/login'),
+          Uri.parse('https://310c-45-238-146-4.ngrok-free.app/login'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
@@ -47,7 +49,12 @@ class _IniciarpageState extends State<Iniciarpage> {
         );
 
         if (response.statusCode == 200) {
-          // Navegar a otra pantalla si es necesario
+          Map<String, dynamic> data = json.decode(response.body);
+          int userId = data['user_id'];
+          Navigator.pushReplacement(
+
+            context,
+            MaterialPageRoute(builder: (context) => Principalpage(userId: userId,)));
         }
       } catch (error) {
         setState(() {
@@ -140,6 +147,7 @@ class _IniciarpageState extends State<Iniciarpage> {
           ),
         ),
         obscureText: true,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         textAlign: TextAlign.center,
         maxLength: 4,
         keyboardType: TextInputType.number,

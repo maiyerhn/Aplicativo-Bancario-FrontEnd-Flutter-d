@@ -1,22 +1,30 @@
 import 'dart:convert';
 
-import 'package:bankco/models/datos.dart';
-
 class User {
-  String? nombre;
-  String? apellido;
-  String? usuario;
-  int? contrasena;
-  String? tipo;
+  int id;
+  String nombre;
+  String apellido;
+  String usuario;
+  String tipo;
   
 
-  User(String jsonString){
-    Datos datos = new Datos();
-    Map data =jsonDecode(jsonString);
-    this.nombre = data['nombre'];
-    this.apellido = data['apellido'];
-    this.usuario = data['usuario'];
-    this.contrasena = data['contrasena'];
-    this.tipo = "usuario";
+  User({
+    required this.id,
+    required this.nombre,
+    required this.apellido,
+    required this.usuario,
+    required this.tipo,
+  });
+
+    User.empty() : this(id: 0, nombre: '', apellido: '', usuario: '', tipo: ''); 
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      nombre: json['nombre'],
+      apellido: json['apellido'],
+      usuario: json['usuario'],
+      tipo: json['tipo'],
+    );
   }
 }

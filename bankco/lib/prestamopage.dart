@@ -1,7 +1,12 @@
+import 'package:bankco/models/user.dart';
 import 'package:bankco/principalpage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Prestamopage extends StatelessWidget {
+  late final User user;
+
+  Prestamopage({required this.user});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +48,8 @@ class Prestamopage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Principalpage()),
-                  );
+                    MaterialPageRoute(builder: (context) => Principalpage(userId: user.id,),
+                  ));
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white, backgroundColor: Colors.blue.shade700, 
@@ -71,9 +76,11 @@ class Prestamopage extends StatelessWidget {
           labelText: 'Ingrese La Cantidad',
           alignLabelWithHint: true,
           labelStyle: TextStyle(
+            
                       fontWeight: FontWeight.bold,
                     ),
         ),
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         textAlign: TextAlign.center,
       ),
       );
