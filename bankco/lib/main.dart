@@ -1,18 +1,28 @@
-import 'package:bankco/homepage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'homepage.dart';
+import 'providers/providerUser.dart'; 
 
 void main() {
-  runApp (AplicativobankCo());
+  runApp(BankCo());
 }
 
-class AplicativobankCo  extends StatelessWidget{
+class BankCo extends StatelessWidget {
+  const BankCo({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'BankCo',
-      debugShowCheckedModeBanner: false,
-      home: Homepage());
+    return ChangeNotifierProvider(
+      create: (context) => UserProvider(), 
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'BankCo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Homepage(), 
+      ),
+    );
   }
-  
 }
-

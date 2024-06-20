@@ -1,6 +1,10 @@
+import 'package:bankco/models/user.dart';
 import 'package:flutter/material.dart';
 
 class Pagopage extends StatelessWidget {
+   final User? user;
+
+  Pagopage({required this.user});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
