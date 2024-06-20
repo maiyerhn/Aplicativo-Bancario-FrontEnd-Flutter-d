@@ -6,16 +6,18 @@ import 'providers/providerUser.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(BankCo());
 }
 
-class MyApp extends StatelessWidget {
+class BankCo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+  
     return ChangeNotifierProvider(
       create: (context) => UserProvider(), 
       child: MaterialApp(
-        title: 'Tu Aplicación',
+        debugShowCheckedModeBanner: false,
+        title: 'BankCo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,

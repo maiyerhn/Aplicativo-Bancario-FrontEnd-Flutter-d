@@ -1,8 +1,7 @@
-import 'package:bankco/providers/user_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:bankco/models/user.dart';
-import 'package:bankco/providers/user_provider.dart';
 import 'package:bankco/pagopage.dart';
 import 'package:bankco/prestamopage.dart';
 
@@ -128,14 +127,14 @@ class Principalpage extends StatelessWidget {
   Widget _inputText2(User user) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 30.0),
-      child: Center(child: Text('Dinero: ${user.bank.dinero}')),
+      child: Center(child: Text('Dinero: 30')),
     );
   }
 
   Widget _inputText3(User user) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 30.0),
-      child: Center(child: Text('Deuda: ${user.bank.deuda}')),
+      child: Center(child: Text('Deuda: 30')),
     );
   }
 }
