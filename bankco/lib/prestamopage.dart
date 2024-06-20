@@ -1,13 +1,13 @@
-import 'package:bankco/models/user.dart';
-import 'package:bankco/principalpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:bankco/models/user.dart';
+import 'package:bankco/principalpage.dart';
 import 'package:bankco/providers/providerUser.dart';
 
 class Prestamopage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
-  late final User user;
+  final User user;
 
   Prestamopage({required this.user});
 
@@ -97,7 +97,7 @@ class Prestamopage extends StatelessWidget {
     );
   }
 
-  void _handlePrestamo(BuildContext context) {
+  void _handlePrestamo(BuildContext context) async {
     final String cantidadStr = _controller.text;
     if (cantidadStr.isEmpty) {
       _showErrorDialog(context, 'Por favor ingrese una cantidad.');
@@ -114,13 +114,17 @@ class Prestamopage extends StatelessWidget {
     final updatedDinero = userProvider.user.dinero + cantidad;
     final updatedDeuda = userProvider.user.deuda + cantidad;
 
-    userProvider.updateDinero(updatedDinero);
-    userProvider.updateDeuda(updatedDeuda);
+    try {
+      userProvider.updateDinero(updatedDinero);
+      userProvider.updateDeuda(updatedDeuda);
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Principalpage()),
-    );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Principalpage()),
+      );
+    } catch (e) {
+      _showErrorDialog(context, 'Error al actualizar los datos en el servidor.');
+    }
   }
 
   void _showErrorDialog(BuildContext context, String message) {

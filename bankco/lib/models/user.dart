@@ -13,8 +13,8 @@ class User {
     required this.apellido,
     required this.usuario,
     required this.tipo,
-    this.dinero = 0,
-    this.deuda = 0,
+    this.dinero = 0.0,
+    this.deuda = 0.0,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -24,9 +24,21 @@ class User {
       apellido: json['apellido'],
       usuario: json['usuario'],
       tipo: json['tipo'],
-      dinero: json['dinero'] ?? 0,
-      deuda: json['deuda'] ?? 0,
+      dinero: json['dinero'] != null ? double.parse(json['dinero'].toString()) : 0.0,
+      deuda: json['deuda'] != null ? double.parse(json['deuda'].toString()) : 0.0,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'nombre': nombre,
+      'apellido': apellido,
+      'usuario': usuario,
+      'tipo': tipo,
+      'dinero': dinero,
+      'deuda': deuda,
+    };
   }
 
   User copyWith({

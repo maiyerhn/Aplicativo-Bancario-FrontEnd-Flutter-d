@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:bankco/models/user.dart';
 import 'package:bankco/prestamopage.dart';
-
-import 'pagopage.dart';
-import 'providers/providerUser.dart';
+import 'package:bankco/pagopage.dart';
+import 'package:bankco/providers/providerUser.dart';
 
 class Principalpage extends StatelessWidget {
   @override
