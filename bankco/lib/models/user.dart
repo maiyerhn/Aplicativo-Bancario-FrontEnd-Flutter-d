@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 class User {
-  int id;
-  String nombre;
-  String apellido;
-  String usuario;
-  String tipo;
-  
+  final int id;
+  final String nombre;
+  final String apellido;
+  final String usuario;
+  final String tipo;
 
   User({
     required this.id,
@@ -15,8 +12,6 @@ class User {
     required this.usuario,
     required this.tipo,
   });
-
-    User.empty() : this(id: 0, nombre: '', apellido: '', usuario: '', tipo: ''); 
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(

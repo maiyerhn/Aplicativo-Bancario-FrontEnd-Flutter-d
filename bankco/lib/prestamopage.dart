@@ -48,7 +48,7 @@ class Prestamopage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Principalpage(userId: user.id,),
+                    MaterialPageRoute(builder: (context) => Principalpage( user: user,),
                   ));
                 },
                 style: ElevatedButton.styleFrom(

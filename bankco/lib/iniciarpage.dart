@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:bankco/models/user.dart';
 import 'package:bankco/principalpage.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -20,54 +21,54 @@ class _IniciarpageState extends State<Iniciarpage> {
   String get contrasena => _contrasena.text;
 
   Future<void> _login() async {
-    if (_keylog.currentState!.validate()) {
+  if (_keylog.currentState!.validate()) {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final response = await http.post(
+        Uri.parse('https://ddc5-45-238-146-4.ngrok-free.app/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'usuario': usuario,
+          'contrasena': contrasena,
+        }),
+      );
+
+      final responseBody = jsonDecode(response.body);
+
       setState(() {
-        _isLoading = true;
+        _isLoading = false;
+        _response = responseBody['message'];
       });
 
-      try {
-        final response = await http.post(
-          Uri.parse('https://310c-45-238-146-4.ngrok-free.app/login'),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(<String, String>{
-            'usuario': usuario,
-            'contrasena': contrasena,
-          }),
-        );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(responseBody['message'])),
+      );
 
-        final responseBody = jsonDecode(response.body);
-
-        setState(() {
-          _isLoading = false;
-          _response = responseBody['message'];
-        });
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(responseBody['message'])),
-        );
-
-        if (response.statusCode == 200) {
-          Map<String, dynamic> data = json.decode(response.body);
-          int userId = data['user_id'];
-          Navigator.pushReplacement(
-
-            context,
-            MaterialPageRoute(builder: (context) => Principalpage(userId: userId,)));
-        }
-      } catch (error) {
-        setState(() {
-          _isLoading = false;
-          _response = 'Ocurrió un error. Inténtelo de nuevo.';
-        });
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Ocurrió un error. Inténtelo de nuevo.')),
+      if (response.statusCode == 200) {
+        User user = User.fromJson(responseBody['user']);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Principalpage(user: user)),
         );
       }
+    } catch (error) {
+      setState(() {
+        _isLoading = false;
+        _response = 'Ocurrió un error. Inténtelo de nuevo.';
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ocurrió un error. Inténtelo de nuevo.')),
+      );
     }
   }
+}
+
 
 
   @override
