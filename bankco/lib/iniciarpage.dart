@@ -1,8 +1,12 @@
 import 'dart:convert';
+import 'package:bankco/models/user.dart';
 import 'package:bankco/principalpage.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'providers/providerUser.dart'; 
 
 class Iniciarpage extends StatefulWidget {
   @override
@@ -27,7 +31,7 @@ class _IniciarpageState extends State<Iniciarpage> {
 
       try {
         final response = await http.post(
-          Uri.parse('https://310c-45-238-146-4.ngrok-free.app/login'),
+          Uri.parse('https://62ba-45-238-146-4.ngrok-free.app/login'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
@@ -50,11 +54,12 @@ class _IniciarpageState extends State<Iniciarpage> {
 
         if (response.statusCode == 200) {
           Map<String, dynamic> data = json.decode(response.body);
-          int userId = data['user_id'];
+          User user = User.fromJson(data['user']);
+          Provider.of<UserProvider>(context, listen: false).setUser(user);
           Navigator.pushReplacement(
-
             context,
-            MaterialPageRoute(builder: (context) => Principalpage(userId: userId,)));
+            MaterialPageRoute(builder: (context) => Principalpage()),
+          );
         }
       } catch (error) {
         setState(() {
@@ -68,7 +73,6 @@ class _IniciarpageState extends State<Iniciarpage> {
       }
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -92,22 +96,22 @@ class _IniciarpageState extends State<Iniciarpage> {
           key: _keylog,
           child: SingleChildScrollView(
             child: Column(
-            children: <Widget>[
-              _inputtext5(),
-              _inputtext1(),
-              _inputtext2(),
-              _inputtext3(),
-              _inputtext4(),
-              if (_isLoading) CircularProgressIndicator(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(_response),
-              ),
-            ],
+              children: <Widget>[
+                _inputtext5(),
+                _inputtext1(),
+                _inputtext2(),
+                _inputtext3(),
+                _inputtext4(),
+                if (_isLoading) CircularProgressIndicator(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(_response),
+                ),
+              ],
+            ),
           ),
         ),
       ),
-          ),
     );
   }
 
@@ -177,8 +181,7 @@ class _IniciarpageState extends State<Iniciarpage> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 80.0, vertical: 30.0),
       child: ElevatedButton(
-        onPressed: () {
-        },
+        onPressed: () {},
         child: Center(child: Text('Registrarse')),
       ),
     );
