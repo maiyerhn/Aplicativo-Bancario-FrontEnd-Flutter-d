@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class Pagopage extends StatelessWidget {
    final User? user;
 
-  Pagopage({required this.user});
+  const Pagopage({super.key, required this.user});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -21,7 +21,7 @@ class Pagopage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
-              icon: ImageIcon(AssetImage('lib/img/iconLog.png')),
+              icon: const ImageIcon(AssetImage('lib/img/iconLog.png')),
               onPressed: () {},
             ),
           ],

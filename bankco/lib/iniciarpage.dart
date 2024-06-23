@@ -8,6 +8,8 @@ import 'package:bankco/models/user.dart';
 import 'package:bankco/principalpage.dart';
 
 class Iniciarpage extends StatefulWidget {
+  const Iniciarpage({super.key});
+
   @override
   _IniciarpageState createState() => _IniciarpageState();
 }
@@ -32,7 +34,7 @@ class _IniciarpageState extends State<Iniciarpage> {
     });
 
     try {
-      final url = Uri.parse('https://ddc5-45-238-146-4.ngrok-free.app/login');
+      final url = Uri.parse('https://22cd-45-238-146-4.ngrok-free.app/login');
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},

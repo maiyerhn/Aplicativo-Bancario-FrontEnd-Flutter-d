@@ -6,6 +6,8 @@ import 'package:bankco/pagopage.dart';
 import 'package:bankco/providers/providerUser.dart';
 
 class Principalpage extends StatelessWidget {
+  const Principalpage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -14,7 +16,7 @@ class Principalpage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.person),
+          icon: const Icon(Icons.person),
           onPressed: () {},
         ),
         backgroundColor: Colors.blue.shade700,
@@ -22,7 +24,7 @@ class Principalpage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
-              icon: ImageIcon(AssetImage('lib/img/iconLog.png')),
+              icon: const ImageIcon(AssetImage('lib/img/iconLog.png')),
               onPressed: () {},
             ),
           ],
@@ -31,7 +33,7 @@ class Principalpage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           color: Colors.black12,
-          margin: EdgeInsets.all(40.0),
+          margin: const EdgeInsets.all(40.0),
           child: Column(
             children: <Widget>[
               _inputText1(user),
@@ -47,7 +49,7 @@ class Principalpage extends StatelessWidget {
                           BoxShadow(
                             color: Colors.blue.shade700,
                             blurRadius: 10,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
@@ -61,23 +63,23 @@ class Principalpage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.blue.shade700,
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           elevation: 0,
                         ),
-                        child: Text('Préstamo'),
+                        child: const Text('Préstamo'),
                       ),
                     ),
-                    SizedBox(width: 30),
+                    const SizedBox(width: 30),
                     Container(
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
                             color: Colors.blue.shade700,
                             blurRadius: 10,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
@@ -91,13 +93,13 @@ class Principalpage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.blue.shade700,
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           elevation: 0,
                         ),
-                        child: Text('Pagar'),
+                        child: const Text('Pagar'),
                       ),
                     ),
                   ],
@@ -112,7 +114,7 @@ class Principalpage extends StatelessWidget {
 
   Widget _inputText1(User user) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0),
+      margin: const EdgeInsets.symmetric(vertical: 20.0),
       child: Center(
         child: Text('Bienvenido ${user.nombre} ${user.apellido}'),
       ),
@@ -121,14 +123,14 @@ class Principalpage extends StatelessWidget {
 
   Widget _inputText2(User user) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30.0),
+      margin: const EdgeInsets.symmetric(vertical: 30.0),
       child: Center(child: Text('Dinero: ${user.dinero.toString()}')),
     );
   }
 
   Widget _inputText3(User user) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30.0),
+      margin: const EdgeInsets.symmetric(vertical: 30.0),
       child: Center(child: Text('Deuda: ${user.deuda.toString()}')),
     );
   }
