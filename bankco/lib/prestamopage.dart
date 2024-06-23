@@ -9,14 +9,14 @@ class Prestamopage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   final User user;
 
-  Prestamopage({required this.user});
+  Prestamopage({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -27,7 +27,7 @@ class Prestamopage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
-              icon: ImageIcon(AssetImage('lib/img/iconLog.png')),
+              icon: const ImageIcon(AssetImage('lib/img/iconLog.png')),
               onPressed: () {},
             ),
           ],
@@ -35,7 +35,7 @@ class Prestamopage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.black12,
-        margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+        margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
         child: Form(
           child: Column(
             children: <Widget>[
@@ -49,7 +49,7 @@ class Prestamopage extends StatelessWidget {
                         BoxShadow(
                           color: Colors.blue.shade700,
                           blurRadius: 10,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
@@ -60,13 +60,13 @@ class Prestamopage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.blue.shade700,
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         elevation: 0,
                       ),
-                      child: Text('Préstamo'),
+                      child: const Text('Préstamo'),
                     ),
                   ),
                 ],
@@ -80,7 +80,7 @@ class Prestamopage extends StatelessWidget {
 
   Widget _inputtext1() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+      margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: TextFormField(
         controller: _controller,
         decoration: const InputDecoration(
@@ -132,11 +132,11 @@ class Prestamopage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: const Text('Error'),
           content: Text(message),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },

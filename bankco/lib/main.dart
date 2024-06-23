@@ -21,7 +21,7 @@ class BankCo extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Homepage(), 
+        home: const Homepage(), 
       ),
     );
   }

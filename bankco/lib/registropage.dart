@@ -5,13 +5,15 @@ class RegistroPage extends StatelessWidget {
    final TextEditingController _usuario = TextEditingController();
   final TextEditingController _contrasena = TextEditingController();
 
+  RegistroPage({super.key});
+
   String get usuario => _usuario.text;
   String get contrasena => _contrasena.text;
 
   @override
   
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -19,10 +21,10 @@ class RegistroPage extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('BankCo'),
-            SizedBox(width: 8),
+            const Text('BankCo'),
+            const SizedBox(width: 8),
             IconButton(
-              icon: ImageIcon(AssetImage('lib/img/iconLog.png')),
+              icon: const ImageIcon(AssetImage('lib/img/iconLog.png')),
               onPressed: () {},
             ),
           ],
@@ -31,9 +33,9 @@ class RegistroPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           color: Colors.black12,
-          margin: EdgeInsets.all(40.0),
+          margin: const EdgeInsets.all(40.0),
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               children: <Widget>[
                 _inputtext6(),
@@ -52,7 +54,7 @@ class RegistroPage extends StatelessWidget {
   
   _inputtext1() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+      margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       TextFormField(
         controller: _usuario,
@@ -70,7 +72,7 @@ class RegistroPage extends StatelessWidget {
 
   _inputtext2() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+      margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       TextFormField(
         decoration: const InputDecoration(
@@ -87,7 +89,7 @@ class RegistroPage extends StatelessWidget {
   }
   _inputtext3() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+      margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       TextFormField(
         decoration: const InputDecoration(
@@ -103,7 +105,7 @@ class RegistroPage extends StatelessWidget {
   }
   _inputtext4() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+      margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       TextFormField(
         decoration: const InputDecoration(
@@ -119,7 +121,7 @@ class RegistroPage extends StatelessWidget {
   }
   _inputtext5() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+      margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
       child: 
       
       const ElevatedButton(
@@ -132,7 +134,7 @@ class RegistroPage extends StatelessWidget {
 
 _inputtext6() {
   return Container(
-    margin: EdgeInsetsDirectional.only(top: 20),
+    margin: const EdgeInsetsDirectional.only(top: 20),
     child: Center(
       child: Text(
         'Registro',
