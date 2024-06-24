@@ -42,7 +42,7 @@ class UserProvider extends ChangeNotifier {
   }
 
  void _updateBackend() async {
-  final url = Uri.parse('https://22cd-45-238-146-4.ngrok-free.app/users/${user.id}');
+  final url = Uri.parse('https://c5de-45-238-146-4.ngrok-free.app/users/${user.id}');
 
    try {
       final response = await http.put(
