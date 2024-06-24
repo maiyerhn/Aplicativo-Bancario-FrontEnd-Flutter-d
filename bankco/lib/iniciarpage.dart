@@ -34,7 +34,7 @@ class _IniciarpageState extends State<Iniciarpage> {
     });
 
     try {
-      final url = Uri.parse('https://22cd-45-238-146-4.ngrok-free.app/login');
+      final url = Uri.parse('https://c5de-45-238-146-4.ngrok-free.app/login');
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
@@ -115,7 +115,7 @@ class _IniciarpageState extends State<Iniciarpage> {
       ),
       body: Container(
         color: Colors.black12,
-        margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
         child: Column(
           children: <Widget>[
             _inputText5(),

@@ -35,7 +35,7 @@ class Prestamopage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.black12,
-        margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
         child: Form(
           child: Column(
             children: <Widget>[
@@ -120,7 +120,7 @@ class Prestamopage extends StatelessWidget {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Principalpage()),
+        MaterialPageRoute(builder: (context) => const Principalpage()),
       );
     } catch (e) {
       _showErrorDialog(context, 'Error al actualizar los datos en el servidor.');
